@@ -57,3 +57,26 @@ Speed for advanced users
 Commands that are annoying to dig for
 
 If something already has a perfect shortcut, adding it to kbar is optional—not mandatory.
+
+
+
+
+4. Follow iD naming + UX conventions
+
+kbar actions should sound like iD actions.
+
+Good:
+
+“Add Point”
+
+“Draw Line”
+
+“Split Way”
+
+Bad:
+
+“Create a node here”
+
+“Initiate polyline creation”
+
+Consistency matters because iD is used by thousands of contributors under the OpenStreetMap umbrella.
