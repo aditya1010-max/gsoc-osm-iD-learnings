@@ -1,0 +1,18 @@
+main things to keep in mind for applying kbar functionality in osm-iD
+
+1. Respect iD’s mode-driven architecture
+
+iD lives and breathes modes (browse, add-point, draw-line, etc.).
+
+Keep in mind:
+
+kbar actions should almost always enter a mode, not do heavy logic themselves.
+
+Your onSelect should usually look like:
+
+context.enter(modeAddPoint(context))
+
+
+Never bypass mode logic just to “do the thing faster”.
+
+👉 If it doesn’t map cleanly to a mode, it probably doesn’t belong in kbar.

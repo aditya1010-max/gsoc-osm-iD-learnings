@@ -1,0 +1,15 @@
+High-Value "GSoC Level" Features for kbarTo make your proposal "attractive," 
+features that the current UI hides deep in menus. 
+
+Here are four categories of advanced shortcuts you could implement using the context API:
+
+1.Quick-Action Geometry ToolsiD has powerful tools that are usually buried in the right-click "Operations" menu. 
+Mapping these to kbar is a massive win for productivity."Orthogonalize" (Square corners): context.perform(actionOrthogonalize(ids, context.projection))"Circularize": context.perform(actionCircularize(ids, context.projection))"Reverse Way" (Direction): context.perform(actionReverse(ids))"Extract Node": For moving a node out of a way without deleting it.
+
+2. Preset-Specific "Add" CommandsInstead of just "Add Point," imagine typing "Add Fire Hydrant".The Logic: Your kbar action would search the presetManager, find the hydrant preset, and call context.enter(modeAddPoint(context, hydrantPreset)).The Value: This skips the entire "search for tag" sidebar process.
+
+3. Map Layer & Debug TogglesNavigating the "Map Data" sidebar is tedious. Propose kbar commands for:Toggle Wireframe Mode: Toggles the context.getDebug('wireframe').Switch Imagery: Quickly switch between Bing, Esri, or Mapbox background layers.Hide/Show Features: Quickly toggle layers like "Point of Interest" or "Service Roads."
+
+4. Navigation & Search (The "Jump" Command)The most powerful use of a palette is moving across the map."Go to Location": Integration with a Geocoder (like Nominatim). Type "London" $\rightarrow$ context.map().centerZoom(...)."Find Entity": Type an OSM ID or a name like "Main St" $\rightarrow$ context.zoomToEntity(id).
+
+
