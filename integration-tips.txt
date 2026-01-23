@@ -16,3 +16,21 @@ context.enter(modeAddPoint(context))
 Never bypass mode logic just to “do the thing faster”.
 
 👉 If it doesn’t map cleanly to a mode, it probably doesn’t belong in kbar.
+
+
+
+
+2. Actions must be context-aware
+
+iD is stateful: selection, geometry, zoom, permissions, etc.
+
+Before registering an action, think:
+
+Does this action require a selection?
+
+Does it only make sense for nodes / ways / areas?
+
+Should it be disabled in read-only mode?
+
+Rule of thumb:
+If a button would be disabled in the UI, the kbar action should be hidden or disabled too.
