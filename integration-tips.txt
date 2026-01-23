@@ -34,3 +34,26 @@ Should it be disabled in read-only mode?
 
 Rule of thumb:
 If a button would be disabled in the UI, the kbar action should be hidden or disabled too.
+
+
+
+
+3. Don’t duplicate existing shortcuts or UI
+
+iD already has:
+
+Keyboard shortcuts
+
+Menus
+
+Toolbars
+
+kbar is for:
+
+Discoverability
+
+Speed for advanced users
+
+Commands that are annoying to dig for
+
+If something already has a perfect shortcut, adding it to kbar is optional—not mandatory.
