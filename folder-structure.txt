@@ -19,3 +19,6 @@ palette.js is responsible for building the DOM structure of the command palette.
 
 
 render.js handles how actions appear on screen. Given a list of actions (usually already filtered), it converts them into DOM nodes, updates the list, highlights selections, and keeps the UI in sync with state. This is where visual updates happen.
+
+
+filter.js contains the search and matching logic. It takes user input and the full action list and returns the best-matching actions. This keeps fuzzy search, ranking, and performance concerns isolated from rendering and events.
