@@ -22,3 +22,6 @@ render.js handles how actions appear on screen. Given a list of actions (usually
 
 
 filter.js contains the search and matching logic. It takes user input and the full action list and returns the best-matching actions. This keeps fuzzy search, ranking, and performance concerns isolated from rendering and events.
+
+
+events.js manages keyboard and input interactions. Arrow keys, Enter, Escape, typing in the input, focus changes — all of that lives here. It translates raw user events into high-level actions like “move selection” or “execute command.”
