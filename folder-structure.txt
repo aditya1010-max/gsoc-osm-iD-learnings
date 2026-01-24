@@ -25,3 +25,6 @@ filter.js contains the search and matching logic. It takes user input and the fu
 
 
 events.js manages keyboard and input interactions. Arrow keys, Enter, Escape, typing in the input, focus changes — all of that lives here. It translates raw user events into high-level actions like “move selection” or “execute command.”
+
+
+lifecycle.js controls open, close, and cleanup behavior. It handles mounting/unmounting the palette, attaching and removing listeners, resetting state, and ensuring nothing leaks when the palette is closed. Think of it as the hygiene and safety net of kbar.
