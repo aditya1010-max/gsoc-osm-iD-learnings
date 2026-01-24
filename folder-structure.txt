@@ -1,0 +1,8 @@
+kbar/
+├─ index.js      → orchestrates everything
+├─ registry.js   → defines WHAT actions exist
+├─ palette.js    → builds DOM structure
+├─ render.js     → renders action list
+├─ filter.js     → search logic
+├─ events.js     → keyboard + input handlers
+├─ lifecycle.js  → open / close / cleanup

@@ -80,3 +80,87 @@ Bad:
 “Initiate polyline creation”
 
 Consistency matters because iD is used by thousands of contributors under the OpenStreetMap umbrella.
+
+
+
+
+
+5. Think about availability tiers
+
+A good mental model:
+
+Always available
+
+Enter browse mode
+
+Add point / line / area
+
+Search, help, preferences
+
+Selection-dependent
+
+Delete
+
+Split
+
+Reverse
+
+Merge
+
+Advanced / power-user
+
+QA tools
+
+Debug toggles
+
+Experimental features
+
+Structure your kbar registry accordingly—don’t dump everything flat.
+
+
+
+
+6. Lazy registration > eager logic
+
+kbar should:
+
+Register lightweight metadata
+
+Defer heavy work until onSelect
+
+Avoid:
+
+Graph mutations during registration
+
+Expensive checks every render
+
+This keeps iD snappy.
+
+
+
+7. Accessibility & keyboard flow matter
+
+Remember:
+
+kbar is keyboard-first
+
+Titles should be searchable and obvious
+
+Avoid cryptic abbreviations
+
+If a mapper types “add”, they should immediately see the right actions.
+
+
+
+
+8. Keep PRs small and scoped
+
+For iD specifically:
+
+One category of actions per PR
+
+No unrelated refactors
+
+Clear before/after behavior
+
+Maintainers love incremental improvements.
