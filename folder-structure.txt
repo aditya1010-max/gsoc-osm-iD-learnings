@@ -16,3 +16,6 @@ registry.js defines what actions exist. It’s purely declarative: commands, the
 
 
 palette.js is responsible for building the DOM structure of the command palette. It creates the container, input field, list wrapper, and any structural elements needed. No logic, no filtering — just “what elements exist and how they’re nested.”
+
+
+render.js handles how actions appear on screen. Given a list of actions (usually already filtered), it converts them into DOM nodes, updates the list, highlights selections, and keeps the UI in sync with state. This is where visual updates happen.
