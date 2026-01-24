@@ -6,3 +6,7 @@ kbar/
 ├─ filter.js     → search logic
 ├─ events.js     → keyboard + input handlers
 ├─ lifecycle.js  → open / close / cleanup
+
+
+
+index.js is the entry point and orchestrator. It wires all the other modules together, initializes state, and exposes the public API used by the rest of the app (for example: open, close, toggle). If you want to understand how the whole kbar system boots up and flows end-to-end, this is the file to read first.
