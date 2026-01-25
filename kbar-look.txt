@@ -70,3 +70,24 @@ No “search” button
 Keyboard-only first
 
 If typing feels even slightly laggy → UI has failed.
+
+
+4️⃣ Results list
+
+Vertical list
+
+Single-line items
+
+No wrapping by default
+
+Each item:
+
+[ icon ]  Action Title
+
+
+Optional later:
+
+[ icon ]  Action Title        ⌘⇧P
+
+
+But not in v1.
