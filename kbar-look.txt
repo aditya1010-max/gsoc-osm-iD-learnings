@@ -49,3 +49,24 @@ Flat
 No shadows fighting the map
 
 This is not Material UI / macOS Spotlight glam.
+
+
+3️⃣ Search input (most important element)
+
+Always at the top
+
+Auto-focused on open
+
+Placeholder like:
+
+“Type a command…”
+
+Key rules
+
+No icons inside input
+
+No “search” button
+
+Keyboard-only first
+
+If typing feels even slightly laggy → UI has failed.
