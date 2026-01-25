@@ -30,3 +30,22 @@ Signals “modal mode”
 Matches iD’s existing confirmation overlays
 
 ✅ Your current .kbar-overlay is correct
+
+
+2️⃣ Palette container (modal)
+
+Centered horizontally
+
+Slightly above vertical center (not dead center)
+
+Fixed max width (≈ 500–600px)
+
+Visual tone
+
+Neutral
+
+Flat
+
+No shadows fighting the map
+
+This is not Material UI / macOS Spotlight glam.
