@@ -28,3 +28,27 @@ events.js manages keyboard and input interactions. Arrow keys, Enter, Escape, ty
 
 
 lifecycle.js controls open, close, and cleanup behavior. It handles mounting/unmounting the palette, attaching and removing listeners, resetting state, and ensuring nothing leaks when the palette is closed. Think of it as the hygiene and safety net of kbar.
+
+
+
+
+// folder structure according to GEMINI (i actually prefer this one)
+
+core/ (The Logic)
+events.js: Manages global keyboard listeners and internal event dispatching for shortcuts and navigation.
+
+filter.js: Contains the fuzzy search and ranking algorithms used to match user input against available actions.
+
+lifecycle.js: Handles the initialization and cleanup logic, ensuring the palette is properly mounted and unmounted.
+
+orchestrator.js: The central controller that coordinates state transitions, such as opening/closing and tracking the active selection.
+
+registry.js: Acts as the data store for all registered actions, providing methods to add, remove, or fetch commands.
+
+ui/ (The Visuals)
+palette.js: The main container component for the modal, including the search input and high-level layout.
+
+render.js: Handles the logic for drawing individual result items and managing the visual display of the results list.
+
+Entry Point
+index.js: The public-facing API that exports only the necessary functions and components for use in the rest of the application.
