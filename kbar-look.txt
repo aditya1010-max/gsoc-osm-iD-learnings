@@ -1,0 +1,13 @@
+Big principle first (this matters most)
+
+kbar in iD should feel:
+
+Invisible when you don’t need it
+
+Obvious when you do
+
+Never louder than the map itself
+
+It is not a product feature.
+It is a power tool.
+
