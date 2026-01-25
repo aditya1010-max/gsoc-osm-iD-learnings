@@ -91,3 +91,22 @@ Optional later:
 
 
 But not in v1.
+
+
+5️⃣ Selection state (future, not yet)
+
+Eventually you’ll want:
+
+Highlighted active row
+
+Arrow-key navigation
+
+Scroll if overflow
+
+But visually:
+
+Subtle background
+
+No loud colors
+
+No gradients
