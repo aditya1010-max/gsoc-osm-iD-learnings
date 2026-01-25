@@ -11,3 +11,22 @@ Never louder than the map itself
 It is not a product feature.
 It is a power tool.
 
+1️⃣ Overlay (background)
+
+Full-screen
+
+Semi-transparent dark layer
+
+Click outside = close
+
+No animation-heavy blur
+
+Why?
+
+Focuses attention
+
+Signals “modal mode”
+
+Matches iD’s existing confirmation overlays
+
+✅ Your current .kbar-overlay is correct
