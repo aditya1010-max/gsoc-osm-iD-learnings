@@ -53,3 +53,25 @@ What should this file own?
 What should it never know about?
 
 That’s architectural thinking — and you cannot get it by pasting working code
+
+
+2️⃣ You develop “interface thinking” (this is huge)
+
+Early PRs force you to write things like:
+
+export function kbarRegistry(context) {
+  return [];
+}
+
+
+Even though it does nothing.
+
+This teaches you:
+
+how modules talk to each other
+
+what data shape should look like
+
+what future code will depend on
+
+This is exactly how large systems are designed.
