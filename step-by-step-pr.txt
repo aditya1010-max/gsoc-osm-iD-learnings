@@ -100,3 +100,72 @@ how actions trigger modes
 where not to put logic
 
 That knowledge transfers to any large JS codebase.
+
+
+4️⃣ Debugging becomes a learning tool (not suffering)
+
+When something breaks in a small PR:
+
+you know exactly what caused it
+
+you learn how the build system reacts
+
+you learn import resolution
+
+you learn side effects
+
+When everything breaks at once:
+
+you panic
+
+you cargo-cult fixes
+
+you learn nothing durable
+
+5️⃣ You’ll be able to explain your code (rare skill)
+
+At the end of this, you’ll be able to say:
+
+“This file exists because of this reason.
+This function is pure on purpose.
+This side effect is isolated here.”
+
+That’s senior-level clarity.
+
+Most devs can’t explain their own PRs — they just hope they pass CI.
+
+6️⃣ This is exactly how GSoC expects you to grow
+
+GSoC is not:
+
+“ship feature fast”
+
+“copy patterns blindly”
+
+It is:
+
+learn a real codebase
+
+iterate with feedback
+
+show growth over time
+
+Your weekly evaluations will literally be easier because:
+
+you can point to learning milestones
+
+you can explain design decisions
+
+you can show evolution
+
+7️⃣ Hidden bonus: you’ll stop fearing refactors
+
+Once you’ve built something incrementally:
+
+refactoring feels natural
+
+deleting code feels safe
+
+changing APIs feels manageable
+
+That confidence is life-changing as a dev.
