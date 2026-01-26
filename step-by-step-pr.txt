@@ -75,3 +75,28 @@ what data shape should look like
 what future code will depend on
 
 This is exactly how large systems are designed.
+
+
+3️⃣ You’ll finally understand iD’s codebase deeply
+
+iD is not a tutorial project. It’s:
+
+D3-heavy
+
+event-driven
+
+side-effect-aware
+
+historically layered
+
+By building kbar incrementally, you’ll learn:
+
+how UI modules are wired
+
+how context flows
+
+how actions trigger modes
+
+where not to put logic
+
+That knowledge transfers to any large JS codebase.
