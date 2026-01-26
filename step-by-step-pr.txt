@@ -1,0 +1,31 @@
+1️⃣ Each PR has a single clear purpose
+
+Example progression:
+
+PR 1:
+
+Add kbar folder + empty scaffold (no behavior)
+
+PR 2:
+
+Add action registry (no UI yet)
+
+PR 3:
+
+Render static command list
+
+PR 4:
+
+Keyboard open/close logic
+
+PR 5:
+
+Filtering + search
+
+Each PR:
+
+compiles
+
+passes CI
+
+can be reviewed in isolation
