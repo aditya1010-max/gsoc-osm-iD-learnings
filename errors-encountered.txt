@@ -1,0 +1,88 @@
+// ERRRORS ON CONSOLE 
+
+localizer.js:356 Missing en translation: operations.redo.title
+
+add_point.js:13 Uncaught TypeError: Cannot set properties of undefined (setting 'id')
+    at modeAddPoint (add_point.js:13:10)
+    at Object.onSelect (registry.js:14:47)
+    at HTMLInputElement.<anonymous> (events.js:229:23)
+2
+add_area.js:11 Uncaught TypeError: Cannot set properties of undefined (setting 'id')
+    at modeAddArea (add_area.js:11:10)
+    at Object.onSelect (registry.js:26:47)
+    at HTMLInputElement.<anonymous> (events.js:229:23)
+add_point.js:13 Uncaught TypeError: Cannot set properties of undefined (setting 'id')
+    at modeAddPoint (add_point.js:13:10)
+    at Object.onSelect (registry.js:14:47)
+    at HTMLButtonElement.<anonymous> (render.js:27:15)
+3
+add_area.js:11 Uncaught TypeError: Cannot set properties of undefined (setting 'id')
+    at modeAddArea (add_area.js:11:10)
+    at Object.onSelect (registry.js:26:47)
+    at HTMLInputElement.<anonymous> (events.js:229:23)
+api.openstreetmap.org/api/capabilities:1 
+ Failed to load resource: net::ERR_NAME_NOT_RESOLVED
+3
+add_point.js:13 Uncaught TypeError: Cannot set properties of undefined (setting 'id')
+    at modeAddPoint (add_point.js:13:10)
+    at Object.onSelect (registry.js:14:47)
+    at HTMLInputElement.<anonymous> (events.js:229:23)
+2
+add_point.js:13 Uncaught TypeError: Cannot set properties of undefined (setting 'id')
+    at modeAddPoint (add_point.js:13:10)
+    at Object.onSelect (registry.js:14:47)
+    at HTMLButtonElement.<anonymous> (render.js:27:15)
+
+
+//ERROR HANDELED 
+
+It means kbar is finally working end-to-end, and now you’re hitting a real iD-editor logic error instead of wiring chaos.
+
+🧠 What this error ACTUALLY means
+
+This is NOT a kbar bug anymore.
+
+This error means:
+
+You are calling modeAddPoint(context) / modeAddArea(context) at a time when the editor is NOT ready to enter a drawing mode.
+
+Specifically:
+
+modeAddPoint expects certain editor state to exist
+
+That state is undefined
+
+The function tries to do something like:
+
+something.id = ...
+
+
+…but something is undefined
+
+Hence:
+
+Cannot set properties of undefined (setting 'id')
+
+
+
+🔍 Why this happens ONLY when using kbar
+
+When iD normally enters add-point mode:
+
+the editor is idle
+
+no other mode is active
+
+map state is consistent
+
+UI focus is correct
+
+When you trigger it from kbar:
+
+kbar still has focus
+
+lifecycle hasn’t fully returned control
+
+you’re entering the mode too early
+
+So the mode code runs in an invalid state

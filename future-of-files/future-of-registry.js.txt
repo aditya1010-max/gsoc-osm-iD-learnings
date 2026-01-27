@@ -1,0 +1,94 @@
+Is this file incomplete?
+Short answer
+
+Yes — intentionally incomplete.
+
+And that’s good.
+
+Why it’s incomplete (by design)
+
+Right now, it only contains:
+
+3 creation modes
+
+1 contextual command
+
+But the structure is already correct.
+
+This file should grow, not be rewritten.
+
+What registry.js should do in the long run
+
+Over time, this becomes the central command catalog for iD.
+
+1. Many more action types
+
+Eventually you’ll see actions like:
+
+Editing
+
+Delete selection
+
+Duplicate
+
+Reverse way
+
+Navigation
+
+Zoom to selection
+
+Jump to coordinates
+
+Presets
+
+Set Road
+
+Set Building
+
+Power-user commands
+
+Toggle wireframe
+
+Reload imagery
+
+Flush cache
+
+All of these belong here, not in UI code.
+
+2. Richer metadata (future-proofing)
+
+Long-term, actions will likely include:
+
+{
+  id: 'delete',
+  title: 'Delete',
+  subtitle: 'Remove selected features',
+  icon: 'iD-icon-trash',
+  shortcut: 'Del',
+  section: 'Edit',
+  keywords: ['remove', 'erase'],
+  enabled: () => context.selectedIDs().length > 0,
+  onSelect: ...
+}
+
+
+Your current structure already allows this.
+
+That’s a very good sign.
+
+3. Separation by domain (likely refactor)
+
+Eventually, this file might split into:
+
+registry/
+  modes.js
+  selection.js
+  navigation.js
+  presets.js
+  debug.js
+
+
+And registry.js would compose them.
+
+But you should not do that yet.
+Premature abstraction would hurt readability right now.

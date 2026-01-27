@@ -1,0 +1,21 @@
+Here is the short and meaningful explanation of the 4 steps used to integrate your KBar into context.js:
+
+1. Import (The Connection)
+JavaScript
+import { kbar } from '../ui/kbar';
+Meaning: This tells the context.js file where to find your code. It links the Core (backend logic) to your UI (frontend logic) so they can talk to each other.
+
+2. Define Variable (The Storage)
+JavaScript
+let _kbar;
+Meaning: This creates a private "container" inside the Context to hold your specific KBar instance. It ensures your KBar exists in memory but isn't accidentally overwritten by something else.
+
+3. Expose Accessor (The Public Switch)
+JavaScript
+context.kbar = () => _kbar;
+Meaning: This gives the rest of the application permission to talk to your KBar. By calling context.kbar(), other features can check if it exists or trigger its methods (like .open()) securely.
+
+4. Instantiate (The Kick-off)
+JavaScript
+_kbar = kbar(context);
+Meaning: This is the "Start Engine" moment. It runs your orchestrator.js code, which immediately sets up the Cmd+K listener on the window. Without this step, your code is imported but never actually turned on.
