@@ -1,0 +1,26 @@
+The flow of single command execution happens in four steps/phases-
+
+Phase 1: Input Detection 
+
+1. User press Ctrl + k on keyboard 
+2. events.js hears it - This file has global event listener attached to the window, which detects the keystroke combination 
+3. after detection events.js tells the orchestrator.js telling user want to open kbar palette 
+4. the orchestrator.js pings the lifecycle.js file to switch the state variable from isOpen: false to isOpen: true.
+
+Phase 2: Rendering 
+
+5. UI is mounted(from palette.js) as the state is true, the main React/DOM component in palette.js is inserted in DOM
+6. Data is fetched from registry.js - as the palette opens it asks registry.js - what commands are available right now?
+7. Focus is automatically shifted to input field inside palette.js so the user can type immediately.
+
+Phase 3: Searching/Filtering
+
+8. User types: "sav" (looking for "Save" option)
+9. filter.js calculates on every user keystroke, the string is sent to filter.js
+10. fuzzy matching- filter.js compares "Sav" against the list from registry.js , assigns a score to items 
+11. updates UI (render.js) - the sorted result from filter are passes to render.js with the help of orchestrator, which updates the visual list the user sees. 
+
+Phase 4: The Execution 
+
+12. User see "Save" highlighted and press Enter.
+13. retrieval of action object - 
