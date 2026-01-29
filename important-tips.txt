@@ -1,1 +1,3 @@
 - look at the other files to draw some ideas about implementation 
+
+- for UI, its important to understand how the context worsk 
