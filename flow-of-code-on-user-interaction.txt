@@ -23,4 +23,20 @@ Phase 3: Searching/Filtering
 Phase 4: The Execution 
 
 12. User see "Save" highlighted and press Enter.
-13. retrieval of action object - 
+13. retrieval of action object stored in registry.js(which contains the actual code function () => context.enter('save'))
+14. trigger: orchestrator.js will execute that function
+15. Finally cleanup by lifecycle.js - immediately after execution, the orchestrator tells lifecycle.js to switch isOpen back to false. The UI vanishes.
+
+
+graph TD
+    User(User Presses Ctrl+K) --> Events[events.js]
+    Events --> Orchestrator[orchestrator.js]
+    Orchestrator --> Lifecycle[lifecycle.js]
+    Lifecycle -->|Set Open| Palette[palette.js]
+    
+    Palette -->|User Types| Filter[filter.js]
+    Filter -->|Query Registry| Registry[registry.js]
+    Registry -->|Return Matches| Render[render.js]
+    
+    Render -->|User Selects| Orchestrator
+    Orchestrator -->|Run Function| OSM_ID[OSM iD Core]
