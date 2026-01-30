@@ -1,0 +1,160 @@
+In your osm-id codebase:
+
+-> context.modes is NOT always available
+
+-> It is initialized later, during UI setup
+
+-> My kbar registry is running before modes are registered
+
+
+
+Also,
+
+Toolbar code (like uiToolDrawModes) runs during UI initialization, where modes are created:
+
+modeAddPoint(context, options);
+modeAddLine(context, options);
+modeAddArea(context, options);
+
+Those calls:
+
+build the mode objects
+
+register them internally
+
+make them available to the editor lifecycle
+
+But they do NOT necessarily populate context.modes in the way you’re assuming, or they do so later.
+
+
+
+important->
+
+This is the core misunderstanding (important)
+
+context.modes is not a public, always-available API in your iD version.
+
+Some versions:
+
+expose context.modes
+
+some don’t
+
+some expose it only after certain UI modules run
+
+Your version clearly falls into the latter category.
+
+
+
+So what is the correct way in YOUR codebase?
+🔑 The safe, version-correct rule
+
+Kbar must not assume context.modes exists.
+
+Instead, kbar should delegate mode switching the same way toolbar buttons do.
+
+And toolbar buttons do NOT call context.enter(context.modes.addPoint()).
+
+They call context.enter(mode) where mode is the object returned by the mode builder at setup time.
+
+
+
+
+✅ Option 1 (RECOMMENDED): store mode references at build time
+
+When modes are built (like in uiToolDrawModes), capture them and reuse them.
+
+Example pattern:
+
+// somewhere during UI setup
+const addPointMode = modeAddPoint(context, options);
+
+
+Then later:
+
+context.enter(addPointMode);
+
+But…
+
+This requires tight coupling between kbar and toolbar setup.
+
+Not ideal.
+
+
+
+✅ Option 2 (BEST for kbar): re-use toolbar behavior indirectly
+
+Instead of trying to grab modes directly, trigger the same code path the toolbar uses.
+
+In your iD version, toolbar buttons do something like:
+
+context.enter(mode);
+
+
+where mode is passed from the UI tool configuration.
+
+So for kbar, the cleanest solution is:
+
+Import the mode builders and call them with the SAME config shape used by the toolbar.
+
+Yes — that means kbar must define minimal mode options.
+
+
+like this ->
+
+import {
+  modeAddPoint,
+  modeAddLine,
+  modeAddArea
+} from '../../modes';
+
+import { presetManager } from '../../presets';
+import { t } from '../../core/localizer';
+
+actions.push(
+  {
+    id: 'add-point',
+    title: t('modes.add_point.title'),
+    onSelect: () => context.enter(
+      modeAddPoint(context, { preset: presetManager.item('point') })
+    )
+  },
+  {
+    id: 'add-line',
+    title: t('modes.add_line.title'),
+    onSelect: () => context.enter(
+      modeAddLine(context, { preset: presetManager.item('line') })
+    )
+  },
+  {
+    id: 'add-area',
+    title: t('modes.add_area.title'),
+    onSelect: () => context.enter(
+      modeAddArea(context, { preset: presetManager.item('area') })
+    )
+  }
+);
+
+
+This works because:
+
+modeAddX(context, options) returns a valid mode object
+
+that object has .enter() / .exit()
+
+context.enter() is happy
+
+no dependency on context.modes
+
+This matches exactly how your toolbar codebase constructs modes.
+
+
+Why earlier advice didn’t fully apply (important clarity)
+
+iD has multiple architectural eras:
+
+| Era   | How modes are entered     |
+| ----- | ------------------------- |
+| Older | pass mode objects only    |
+| Mid   | mode builders + UI wiring |
+| Newer | `context.modes` helpers   |
