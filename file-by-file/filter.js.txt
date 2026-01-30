@@ -1,0 +1,15 @@
+This file contains a function- 
+
+What this function does (high level)
+
+👉 It filters a list of actions based on what the user types.
+
+If the user types nothing → return everything
+
+If the user types "add point" or even "point add" → it matches "Add Point"
+
+Order does not matter
+
+Every word typed must exist somewhere in the action title
+
+This is perfect for a command palette / search bar.
