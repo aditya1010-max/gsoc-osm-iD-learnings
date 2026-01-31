@@ -1,0 +1,16 @@
+I have no to few idea about tests - i have written some during the course that i did few months ago
+I thought tests are like running part of deployed application but no, i was wrong, they are only for developers and run when a person makes the pr - tests are run before code being redy to be merged with main branch.
+
+timeline looks like this ->
+
+You write code
+   ↓
+You run tests (locally)
+   ↓
+You push code
+   ↓
+CI runs tests (GitHub Actions)
+   ↓
+If tests pass → code can be merged
+   ↓
+Production build ships (NO tests included)
