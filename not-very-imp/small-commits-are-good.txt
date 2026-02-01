@@ -1,0 +1,59 @@
+Why multiple small commits are good
+During development
+
+Small commits help you:
+
+easier to undo mistakes
+
+easier to bisect locally
+
+easier to reason about changes
+
+safer experimentation
+
+Example good dev commits:
+
+kbar: add filterActions unit tests
+kbar: fix filtering source list bug
+kbar: cleanup comments
+
+
+Totally fine.
+
+When commits start to matter more
+
+Commits matter more when:
+
+PR is large
+
+changes are subtle
+
+reviewer wants to follow reasoning
+
+or you’re touching critical code
+
+In those cases:
+
+clean commit messages help
+
+logical grouping helps
+
+Squash vs keep commits?
+Two common outcomes (both acceptable)
+1️⃣ Squash merge (very common)
+
+All commits become one commit on main
+
+History is clean
+
+Your intermediate commits don’t matter
+
+This is how many projects (including iD) merge PRs.
+
+2️⃣ Merge commits as-is
+
+Commits stay separate
+
+Requires decent commit messages
+
+Still fine if commits are logical

@@ -1,0 +1,237 @@
+1️⃣ Types of tests (quick taxonomy)
+
+In a frontend codebase like iD, you generally see:
+
+Unit tests
+
+Integration tests
+
+End-to-end (E2E) tests
+
+For Kbar, you will mostly write unit tests, and maybe one light integration-style test.
+
+2️⃣ What you should write for Kbar (realistically)
+✅ MUST-HAVE: Unit tests
+
+These are small, fast, and live under test/unit/.
+
+They test:
+
+one function
+
+with fake inputs
+
+no real DOM
+
+no real map
+
+This is where 90% of your testing effort goes.
+
+⚠️ OPTIONAL: Light integration tests
+
+These test:
+
+2–3 modules working together
+
+still no real browser
+
+still no real map rendering
+
+Nice to have, not mandatory for your PR.
+
+❌ NOT needed for Kbar (right now)
+
+Full E2E browser tests
+
+Visual snapshot tests
+
+Performance tests
+
+Maintainers will not expect these for a first Kbar PR.
+
+3️⃣ File-by-file: what tests to write
+
+Now the important part 👇
+Let’s map each Kbar file → test types → what to assert.
+
+filter.js → PURE UNIT TESTS (very important)
+
+This is the most test-worthy file.
+
+Why?
+
+Pure function
+
+No side effects
+
+Your bug lives here conceptually
+
+Tests you should write
+
+✅ Behavior tests
+
+empty query returns all actions
+
+single-word query filters correctly
+
+multi-word query matches in any order
+
+non-matching query returns empty array
+
+✅ Safety tests
+
+does not mutate input array
+
+handles extra spaces (" add point ")
+
+💡 This is where you lock in the bug fix permanently.
+
+registry.js → CONTRACT tests
+
+Registry is not logic-heavy, so don’t over-test it.
+
+What to test
+
+✅ Every action has:
+
+id (string)
+
+title (string)
+
+onSelect (function)
+
+✅ Calling the registry twice returns:
+
+a new array
+
+not the same reference
+
+Example intent:
+
+“Registry always gives me a fresh, well-formed action list.”
+
+That’s it. One or two tests max.
+
+lifecycle.js → BEHAVIORAL unit test
+
+Small but important.
+
+What to test
+
+✅ When close(reason) is called:
+
+overlay is hidden
+
+focus is restored
+
+onClose(reason) is invoked
+
+You do not test:
+
+CSS
+
+animation
+
+actual DOM focus behavior
+
+Just the contract.
+
+events.js (or input handler) → STATE FLOW tests
+
+This is where your bug actually lived.
+
+What to test (if you touch this file)
+
+✅ Filtering always uses:
+
+full action list
+
+not the already-filtered list
+
+✅ Typing flow:
+
+"p" → "po" → "point" → "add point" works
+
+This may be:
+
+a unit test with mocked dependencies
+
+or a light integration test
+
+If the file is complex and you didn’t change much, you can justify not adding tests here and rely on filter.js tests.
+
+render.js → Usually no unit tests
+
+Rendering code tends to be:
+
+DOM-heavy
+
+brittle to test
+
+not where logic bugs live
+
+Unless you changed rendering logic:
+
+skip tests here
+
+Maintainers are fine with this.
+
+orchestrator.js → OPTIONAL integration-style test
+
+If this file:
+
+wires everything together
+
+owns state like allActions
+
+calls filterActions
+
+Then one test can be valuable:
+
+“Filtering is always based on the full registry result.”
+
+But again: optional unless you touched it heavily.
+
+4️⃣ What you do NOT need to test
+
+This is important so you don’t overwork yourself.
+
+You do NOT need to test:
+
+exact titles ("Add Point" text)
+
+localization keys
+
+icons
+
+exact ordering of actions
+
+internal helper functions that are trivial
+
+Test behavior, not implementation.
+
+5️⃣ Minimal but strong test plan for your PR
+
+If I were reviewing your PR, I’d be very happy with:
+
+✅ filterActions tests (4–6 cases)
+
+✅ lifecycle.js close behavior test
+
+✅ registry.js shape test (1 test)
+
+That’s it.
+
+Anything beyond that is a bonus.
+
+6️⃣ One golden rule to remember
+
+Test the contracts you rely on, not every line of code.
+
+Your contracts are:
+
+filtering is order-independent
+
+source actions are never mutated
+
+closing always restores focus
