@@ -1,0 +1,64 @@
+It surprised me, i though ctrl + k will build kbar every time but not it will just unhide 
+
+- In lot of modern apps (reactor vue)
+ ctrl k will create component + mount DOM and destroy on close 
+
+- but not in iD 
+beacuse iD is older, D3 based , performance-sernsitive, keyboard-heavy 
+
+so it uses different pattern
+
+
+What iD actually does 
+
+at app startup/UI initialization 
+
+create overlay DOM 
+wire keyboard handlers
+hide overlay
+
+The overlay just sits there, invisible 
+
+Wheen user presses ctrl + k
+
+unhide overlay 
+focus input 
+populate actions 
+
+Whwn user ccloses kbar 
+
+hide overlay 
+restore focus 
+
+we do this -> 
+overlay.classed('hidden', true);
+
+not this -> 
+overlay.remove(); and selection.append(...)
+
+
+
+Why id does it this way (very deliberate)
+
+1. PErformance - no DOM  churn , instant open , no layout trash 
+
+2. Predictible focus management - input always exists, focus can be restored reliably , no race conditions
+
+3. Simpler lifecycle - 
+Instad of : create → mount → unmount → destroy
+they do: show → hide
+
+
+
+
+
+small downside -
+
+But dosent this "waste memory" ?
+
+Technically yes - a tiny bit
+
+practically: 
+. negligible
+. far outweighed by UX stability 
+. common in editors 

@@ -25,3 +25,22 @@ UI layer
 Overlay Layer 
 - Its basically UI layer but these are temporarily visible, float abive the map , steal focus and disappear
 - some exaples could be search dialogs, confirmation modals or help popups.
+
+-kbar is exactly this 
+. its shown/hidden
+. not mounted/unmounted 
+. foucus is managed carefully
+. it does not affect the layout
+
+
+Kbar build ?
+
+- it is initialized once 
+- DOM created once 
+- it is hidden by default 
+- showm when needed 
+
+
+- it is build during UI setup
+- lives quietly in DOM
+- activated on demand
