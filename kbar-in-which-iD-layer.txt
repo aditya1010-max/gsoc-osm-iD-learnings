@@ -44,3 +44,21 @@ Kbar build ?
 - it is build during UI setup
 - lives quietly in DOM
 - activated on demand
+
+
+Kbar Interaction With Layers (Important Mental Model)
+
+User presses shortcut
+   ↓
+kbar overlay becomes visible
+   ↓
+kbar queries registry (UI → modes/actions)
+   ↓
+kbar filters results (pure UI logic)
+   ↓
+User selects command
+   ↓
+kbar triggers action / enters mode
+   ↓
+kbar closes and hands control back
+
