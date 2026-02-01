@@ -1,0 +1,56 @@
+I have a kbar.css file lying in the css folder of the osm-iD file structure 
+
+at first i thought it would have to be integrated in the css files layers present in css folder 
+
+but i was wrong - kbar needs to have a different css file 
+
+although some kbar components like button can have a global css button property applied to it but rest other components needs to be have seperate css applied to it 
+
+i have to make sure it lies below the last layer of css - it shouldnt override the existing above css files 
+
+
+Some notes i have collected from me to understand OSM-iD css files better ai ->
+
+1️⃣ First: how iD’s CSS system actually works
+
+Those numbered files you’re seeing are intentional and ordered:
+
+00_reset.css        → normalize / reset
+10_colors.css       → color variables
+20_map.css          → base map styles
+...
+80_app.css          → general UI chrome
+
+
+👉 These are global, foundational layers.
+They define shared visual language across the whole editor.
+
+2️⃣ Where does kbar conceptually belong?
+
+Let’s classify kbar:
+
+❌ Not map rendering
+❌ Not fills / categories
+❌ Not cursors
+❌ Not photos
+❌ Not generic app chrome (buttons, panels)
+
+✅ It’s a feature-specific UI overlay
+
+That puts it in a different category than those numbered files.
+
+3️⃣ Why kbar.css being separate is actually GOOD
+✅ Separation of concerns
+
+kbar.css styles:
+only kbar
+only the overlay
+only its internal UI
+
+Putting that inside 80_app.css would:
+mix unrelated concerns
+make future refactors harder
+make removal harder
+
+Maintainers usually prefer:
+“Feature styles live with the feature.”
