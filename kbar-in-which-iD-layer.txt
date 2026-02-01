@@ -1,0 +1,27 @@
+First of all Kbar is a "Overlay UI tool"
+
+- iD is build in horizontal layers not a single stack 
+
+- layers are -
+data/graph , Modes , Actions , UI Components , Overlays
+
+-In short,
+Map and rendering layer is the bottommost layer,
+- it map tiles, vector rendering , enteties, graph , history, D3 rendering of map
+
+Modes layer
+-These are things like Browse, Add Point, Add Line, Select 
+- It control how click behaves or how mouse/keyboard interacts with the map
+(kbar activates these modes, it is not one by itself)
+
+Action layer
+- There are things like Undo, redo, save , operation on state 
+- kbar references actions but dosent own them.(like another doorway to actions and modes)
+
+UI layer 
+- Ih has side panels , inspectors, dialogs , toolbars and popovers 
+- Kbar lives here.
+
+Overlay Layer 
+- Its basically UI layer but these are temporarily visible, float abive the map , steal focus and disappear
+- some exaples could be search dialogs, confirmation modals or help popups.
