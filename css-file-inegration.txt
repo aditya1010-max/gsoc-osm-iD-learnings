@@ -54,3 +54,54 @@ make removal harder
 
 Maintainers usually prefer:
 “Feature styles live with the feature.”
+
+
+4️⃣ So when would you merge it into an existing file?
+
+Only if both of these are true:
+
+The styles are generic UI primitives
+
+buttons
+
+text inputs
+
+shared panels
+
+They’re reused outside kbar
+
+Example:
+
+a generic .modal-overlay
+
+a shared .search-input
+
+Then → 80_app.css might be appropriate.
+
+But if styles are:
+
+.kbar-overlay { ... }
+.kbar-input { ... }
+.kbar-item { ... }
+
+
+👉 they belong in kbar.css.
+
+
+5️⃣ About “CSS loads in layers, not all at once”
+
+Important clarification:
+
+All CSS files are loaded
+
+But order matters
+
+Later files override earlier ones
+
+So even if kbar.css is separate:
+
+it still participates in the cascade
+
+it just sits after core layers
+
+That’s normal and expected.
