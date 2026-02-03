@@ -13,3 +13,17 @@ In iD, every visible string goes through l10n (button labels, toottips, mode nam
 main point is to never hardcode 'Add point' , Instead it should be written as I10n.t('modes.add_point.title).
 
 the actual text will lives in JSON files in data/locales/
+
+- implementation
+
+so when you see this line - context.l10n.t('modes.add_point.title')
+
+l10n:
+
+looks up the current language (say fr)
+
+finds modes.add_point.title in fr.json
+
+returns "Ajouter un point"
+
+falls back to English if it doesn’t exist
