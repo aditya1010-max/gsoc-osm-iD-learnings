@@ -1,0 +1,272 @@
+What are presets in OSM-iD?
+
+A preset is a human-friendly template for tagging map features.
+
+In OpenStreetMap, everything is just tags:
+
+amenity=restaurant
+cuisine=indian
+name=Sharma Dhaba
+
+Presets turn that into:
+
+🍴 Restaurant
+Name: **\_\_**
+Cuisine: **\_\_**
+Outdoor seating: Yes / No
+
+So instead of:
+
+memorizing tag keys
+
+remembering valid values
+
+typing everything manually
+
+…the editor guides you.
+
+Mental model
+
+Preset = “What is this thing?” + “Which tags should it have?”
+
+Where presets live
+
+In iD, presets are defined in JSON files:
+
+data/
+└─ presets/
+├─ presets.json ← main definitions
+├─ categories.json
+├─ fields.json ← reusable form fields
+├─ defaults.json
+└─ ...
+
+Example preset (simplified):
+
+{
+"restaurant": {
+"name": "Restaurant",
+"geometry": ["point", "area"],
+"tags": {
+"amenity": "restaurant"
+},
+"fields": ["name", "cuisine", "opening_hours"]
+}
+}
+
+What a preset contains
+
+Every preset answers four key questions:
+
+1️⃣ What geometry is allowed?
+"geometry": ["point", "area"]
+
+Can this be:
+
+a point?
+
+a line?
+
+an area?
+
+A road ≠ a bench ≠ a building.
+
+2️⃣ Which tags define it?
+"tags": {
+"amenity": "restaurant"
+}
+
+These tags:
+
+identify the feature
+
+are applied automatically when you select the preset
+
+3️⃣ Which fields should be shown?
+"fields": ["name", "cuisine", "phone"]
+
+Each field maps to:
+
+an OSM tag
+
+an input type (text, combo, checkbox)
+
+4️⃣ How it appears to users
+"name": "Restaurant"
+"icon": "restaurant"
+
+This is pure UI — searchable, translatable, friendly.
+
+What is the Preset Manager?
+
+The Preset Manager is the system that loads, organizes, filters, and serves presets to the editor.
+
+Think of it as:
+
+“Given this feature on the map, what presets make sense right now?”
+
+Responsibilities of the Preset Manager
+
+It:
+
+Loads all preset definitions
+
+Indexes them for fast search
+
+Filters presets by:
+
+geometry
+
+existing tags
+
+Chooses best-match presets
+
+Provides presets to:
+
+the sidebar
+
+search
+
+shortcuts
+
+(yes) your kbar
+
+Why iD needs presets (this is the key part)
+🚫 Without presets
+
+Users would need to:
+
+know every OSM tag
+
+type keys/values manually
+
+remember tagging conventions
+
+make fewer edits (or wrong ones)
+
+That’s impossible at global scale.
+
+✅ With presets
+
+Presets provide:
+
+1️⃣ Accessibility
+
+A first-time mapper can add:
+
+a school
+
+a hospital
+
+a road
+
+…without knowing anything about OSM tagging.
+
+2️⃣ Consistency
+
+Instead of:
+
+amenity=resturant ❌
+amenity=restaurant ✅
+
+Presets:
+
+enforce correct values
+
+reduce spelling errors
+
+prevent weird tagging
+
+3️⃣ Discoverability
+
+Users don’t search for:
+
+amenity=place_of_worship
+
+They search for:
+
+“Temple”, “Mosque”, “Church”
+
+Presets bridge that gap.
+
+4️⃣ Smart UI
+
+Presets let iD:
+
+show relevant fields only
+
+hide invalid options
+
+adapt forms dynamically
+
+A Bench doesn’t need opening_hours.
+A Hospital does.
+
+5️⃣ Internationalization
+
+Preset names + fields use l10n.
+
+Same preset:
+
+“Restaurant” (English)
+
+“Restaurante” (Spanish)
+
+“रेस्तरां” (Hindi)
+
+Same data model, global UI.
+
+Presets vs Raw Tags (important distinction)
+Concept Purpose
+Tags The actual data stored in OSM
+Presets UI helpers for applying tags
+Fields Reusable form inputs
+Preset Manager The brain that connects it all
+
+Presets do not change OSM rules — they guide users to follow them.
+
+How this connects to your kbar work (very relevant for GSoC)
+
+A powerful kbar should integrate presets, not replace them.
+
+Bad kbar:
+
+Add restaurant
+→ applies amenity=restaurant blindly
+
+Good kbar:
+
+Add restaurant
+→ enters draw mode
+→ applies restaurant preset
+→ opens preset form
+
+That means:
+
+you ask the preset manager for presets
+
+you reuse existing tagging logic
+
+maintainers trust your change
+
+If you bypass presets, reviewers will push back hard.
+
+TL;DR
+
+Preset = human-friendly template for OSM tags
+
+Preset Manager = system that loads, filters, and serves presets
+
+iD needs presets to be:
+
+usable
+
+consistent
+
+international
+
+beginner-friendly
+
+Presets are UI, tags are data
+
+Any serious iD feature (like kbar) must respect presets
