@@ -1,0 +1,3 @@
+1. Map at least 5 nodes, points or lines in OSM-iD (the best way to know more about OSM)
+2. Read OSM-ID code structure from github- try to learn about architecture 
+3. read at least 3 new topics in community.OpenStreetMap.com , easiest way to learn about how things go from discussions to production
