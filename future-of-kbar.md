@@ -30,3 +30,9 @@ for example-
 - create road
 
 Internally, these still map to:
+
+- add point
+- add area
+- preset selection
+
+this alone will massively improves onboading.
