@@ -4,6 +4,8 @@ But then i realised its not about "more commands" its about how people think ins
 
 when i see the future of kbar: i see it in three terms- short , medium and long.
 
-layer 0:
+SHORT TERM -
 
-- i only plan
+- basic 3 add actions and 3 edit actions
+- kbar value will not be number of commands
+- its that it becomes a semantic interface instead of a mechanical one.
