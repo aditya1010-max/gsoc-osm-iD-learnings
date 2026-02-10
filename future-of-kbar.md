@@ -63,19 +63,22 @@ LONG TERM (visionary, but realistic)
 - Intent-based commands
 
 Instead of precise commands, users type intent:
-. fix overlapping buildings
-. map this plac
-. clean geometry
+
+- fix overlapping buildings
+- map this plac
+- clean geometry
 
 Kbar will translate intent into action sequence
 
 Acessibility and alternative input
 
 for some users:
-. shortcuts are hard
-. menus are overwhelming
+
+- shortcuts are hard
+- menus are overwhelming
 
 Kbar will give them:
-. keyboard-first access
-. screen-reader-friendly workflows
-. predictable navigation
+
+- keyboard-first access
+- screen-reader-friendly workflows
+- predictable navigation
