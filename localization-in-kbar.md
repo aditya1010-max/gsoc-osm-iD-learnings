@@ -2,4 +2,8 @@ Localization(l10n) means adapting software so that it can woork correctly for us
 
 The Core Idea;
 
-Instead of
+Instead of hardcoding:
+title: 'Add Point'
+
+You write:
+title: () => t('modes.add_point.title')
