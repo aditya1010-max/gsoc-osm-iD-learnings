@@ -7,3 +7,5 @@ title: 'Add Point'
 
 You write:
 title: () => t('modes.add_point.title')
+
+And somewhere else:
