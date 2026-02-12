@@ -26,3 +26,6 @@ That’s localization.
 
 - Localization will be applied in kbar
 - kbar will just a UI wrapper that will pull translated string from a localization system (l10n, i18n, t(), etc.) ,the current language state , translation files (.json, .yaml, etc.)
+
+- flow of command
+  User language → l10n system → KBar registry → rendered actions
