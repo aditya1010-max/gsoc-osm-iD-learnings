@@ -90,3 +90,13 @@ This sections will bridge knowledge between Kbar <-> core editor
 - Common commands
 - Power tips
 - It will contain all the non-technical stuff
+
+8. Inline Code Documentation & Comments
+
+- This is very also an important part of docs
+- This will contain JSDoc for: action interface, registry methods, filtering logic
+- It also includes comments explaining why, not what
+
+9. “Future Work & Design Decisions” Doc
+
+- This is also an important doc that will contain future
