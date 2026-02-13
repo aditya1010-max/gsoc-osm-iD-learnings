@@ -99,4 +99,4 @@ This sections will bridge knowledge between Kbar <-> core editor
 
 9. “Future Work & Design Decisions” Doc
 
-- This is also an important doc that will contain future
+- This is also an important doc that will contain future\
