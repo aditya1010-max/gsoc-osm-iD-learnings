@@ -83,3 +83,10 @@ This sections will bridge knowledge between Kbar <-> core editor
 7. User-Facing Documentation (Short & Sweet)
 
 - This will be for mappers
+- This should live where users actually read docs
+- This will include:
+- What KBar is
+- How to open it
+- Common commands
+- Power tips
+- It will contain all the non-technical stuff
