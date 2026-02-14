@@ -104,3 +104,14 @@ This sections will bridge knowledge between Kbar <-> core editor
 - Trade-offs made
 - known limitations
 - Extension ideas (beyond GSoC)
+
+#How to Present This in the Proposal (Template)
+
+Documentation Deliverables
+
+- Architectural overview of KBar and its integration with iD
+- Contributor guide for registering actions and presets
+- Localization and internationalization documentation
+- Context-awareness and filtering behavior documentation
+- User-facing usage guide
+- Inline code documentation and JSDoc coverage
