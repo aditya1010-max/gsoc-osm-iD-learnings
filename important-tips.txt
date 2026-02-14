@@ -1,3 +1,5 @@
 - look at the other files to draw some ideas about implementation 
 
 - for UI, its important to understand how the context worsk 
+
+- “KBar does not strictly require D3, but selectively uses D3’s selection and data-binding patterns to stay consistent with iD’s existing UI architecture.” (add this in GSoC proposal)
