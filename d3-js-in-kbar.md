@@ -90,7 +90,7 @@ We shouldnt:
 
 This will become harder to debug than plain DOM
 
-# Recommended Middle-Ground (Best Answer)
+# Recommended Middle-Ground
 
 ✅ Use D3 for:
 
